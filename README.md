@@ -1,4 +1,4 @@
-### simple visual system needs - Hand Detction and Basic Hand Gesture Recognition
+#### Simple Visual System Needs - Hand Detection and Basic Hand Gesture Recognition
 -----------------------------
 Under Development ...
 
