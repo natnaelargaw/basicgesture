@@ -125,7 +125,7 @@ class NN:
   def getme(self,patt):
     for p2 in patt:
       inputs = p2[0]
-      print 'Inputs:', p2[0], '-->', self.runNN(inputs), '\tTarget', p2[1]
+      print 'Inputs:', p2[0], '-->', self.runNN(inputs)
 
 def sigmoid (x):
   return math.tanh(x)
@@ -156,22 +156,27 @@ def main ():
       [[1,0,0,0], [0.9]],
       [[1,1,0,0], [0.1]]
   ]
-  myNN = NN ( 4, 3, 1) #NN ( 3 --> is NI should be equal to input number horizontally , 3 --> hidden layer, 1 --> an out put)
-  myNN.train(pat)
+
+  sampleImg= [
+
+    [[255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255],[0.9]],
+    [[255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255],[0.9]],
+    [[0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255],[0.9]],
+    [[0, 0, 0, 0, 0, 0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0.1]],
+    [[0, 0, 0, 0, 0, 0,0,0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0.1]],
+    [[255, 255, 255, 255, 0, 0,0,0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0.1]]
+  ]
+
+
+  myNN = NN ( 20, 3, 1) #NN ( 3 --> is NI should be equal to input number horizontally , 3 --> hidden layer, 1 --> an out put)
+  myNN.train(sampleImg)
 
   print("Testing")
-  aaaa= [  [[1,1,1,0], [0.1]] ] # a list of fed input to the network
+  aaaa= [ [[255, 255, 255, 255, 255, 255,255,0, 255, 255, 255, 0, 255, 255, 0,255, 255,255,255,255]] ] # a list of fed input to the network
 
 
 
   myNN.getme(aaaa)
-
-  
-  
-
-
-
-
 
 if __name__ == "__main__":
     main()

@@ -134,9 +134,9 @@ def trimmer(data1, w, h):
 
 
 
-def entry():
-    ref = cv2.imread("/home/ati/basicgesture/corpus/A1.jpg")
-    frame = cv2.imread("/home/ati/basicgesture/corpus/A2.jpg")
+def entry(ref, frame):
+    # ref = cv2.imread("/home/ati/basicgesture/corpus/A1.jpg")
+    # frame = cv2.imread(q"/home/ati/basicgesture/corpus/A2.jpg")
     diff1 = cv2.absdiff(ref, frame)  # be frame and ref free
     morphD=15
     thresh = cv2.threshold(diff1, 25, 255, cv2.THRESH_BINARY)[1]
@@ -168,11 +168,27 @@ def entry():
 
     cv2.imshow("Full Window", frame)
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
+def init():
+    camera =cv2.VideoCapture(0)
+    count1=1
+    reff =''
+    flag=0
+    while True:
 
-
+        # Get the current frame
+        ret, frame = camera.read()
+        if not flag:
+            reff =frame
+            flag=1
+            continue
+        if not count1 %7:
+            reff=frame
+        entry(reff, frame)
+        count1 =count1 +1
 
 
 if __name__ =="__main__":
-    entry()
+    init()
+
